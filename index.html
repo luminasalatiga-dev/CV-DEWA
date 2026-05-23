@@ -34,12 +34,15 @@
         }
     </script>
     <style>
+        /* Custom gradient text */
         .text-gradient {
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-image: linear-gradient(to right, #1e3a8a, #3b82f6);
         }
+        
+        /* Timeline line */
         .timeline-container::before {
             content: '';
             position: absolute;
@@ -57,173 +60,511 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased bg-slate-50 text-slate-800">
+<body class="font-sans antialiased bg-slate-50 text-slate-800 selection:bg-primary-500 selection:text-white">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-300 shadow-sm" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <a href="#" class="text-xl font-bold text-primary-900">MAHADEWA<span class="text-primary-600">.</span></a>
-                <div class="hidden md:flex space-x-8 text-sm font-medium">
-                    <a href="#tentang" class="text-slate-600 hover:text-primary-600">Tentang</a>
-                    <a href="#pengalaman" class="text-slate-600 hover:text-primary-600">Pengalaman</a>
-                    <a href="#pendidikan" class="text-slate-600 hover:text-primary-600">Lisensi & Pendidikan</a>
-                    <a href="#bisnis" class="text-slate-600 hover:text-primary-600">Aktivitas</a>
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-xl font-bold text-primary-900 tracking-tight">MAHADEWA<span class="text-primary-600">.</span></a>
                 </div>
-                <a href="#kontak" class="bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary-700">Hubungi Saya</a>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#tentang" class="text-slate-600 hover:text-primary-600 font-medium transition">Tentang</a>
+                    <a href="#pengalaman" class="text-slate-600 hover:text-primary-600 font-medium transition">Pengalaman</a>
+                    <a href="#pendidikan" class="text-slate-600 hover:text-primary-600 font-medium transition">Lisensi & Pendidikan</a>
+                    <a href="#bisnis" class="text-slate-600 hover:text-primary-600 font-medium transition">Aktivitas & Klien</a>
+                </div>
+                <div class="hidden md:flex">
+                    <a href="#kontak" class="bg-primary-600 hover:bg-primary-700 text-white px-5 py-2 rounded-full font-medium transition shadow-md hover:shadow-lg">Hubungi Saya</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-primary-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#tentang" class="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-primary-600 rounded-md">Tentang</a>
+                <a href="#pengalaman" class="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-primary-600 rounded-md">Pengalaman</a>
+                <a href="#pendidikan" class="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-primary-600 rounded-md">Lisensi & Pendidikan</a>
+                <a href="#bisnis" class="block px-3 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-primary-600 rounded-md">Aktivitas & Klien</a>
+                <a href="#kontak" class="block mt-4 px-3 py-2 text-base font-medium text-center text-white bg-primary-600 rounded-md">Hubungi Saya</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="pt-32 pb-20 text-center">
-        <div class="max-w-3xl mx-auto px-4">
-            <h1 class="text-5xl font-bold text-slate-900 mb-6">Ia Mahadewa Putera Dirgantoro, <span class="text-gradient block mt-2">S.H., M.Kn.</span></h1>
-            <p class="text-lg text-slate-600">11+ tahun pengalaman di Hukum, Perizinan, dan Sertifikasi Halal.</p>
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 bg-primary-50 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center max-w-3xl mx-auto">
+                <p class="text-sm md:text-base font-semibold text-primary-600 tracking-wide uppercase mb-3">Legal, Licensing & Halal Professional</p>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6">
+                    Ia Mahadewa Putera Dirgantoro, <span class="text-gradient block mt-2">S.H., M.Kn.</span>
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-slate-600 mb-8 leading-relaxed">
+                    Lebih dari 10 tahun pengalaman di bidang Hukum, Perizinan, dan General Affairs. Serta berdedikasi tinggi dalam kepatuhan proses Sertifikasi Halal bagi industri dan UMKM.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#kontak" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-full font-medium text-lg transition shadow-lg shadow-primary-600/30 flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-xl"></i> Konsultasi Sekarang
+                    </a>
+                    <a href="#pengalaman" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-3 rounded-full font-medium text-lg transition shadow-sm flex items-center justify-center gap-2">
+                        Lihat Profil <i class="fas fa-arrow-down text-sm"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- About -->
+    <!-- About Section -->
     <section id="tentang" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-3xl font-bold mb-6">Tentang Saya</h2>
-                <div class="space-y-4 text-slate-600">
-                    <p>Perjalanan karir saya selama 11 tahun telah membentuk pemahaman mendalam di bidang hukum, kepatuhan korporasi, dan perizinan. Memulai karir sebagai Paralegal di <strong>LBH Bhakti Nusa</strong>, dedikasi tersebut membawa saya naik tingkat menjadi seorang Lawyer yang kini aktif menangani advokasi dan litigasi.</p>
-                    <p>Selain di firma hukum, saya memiliki rekam jejak di sektor korporasi sebagai GA & Legal di <strong>PT Educa Sismedia Indonesia</strong> serta HRD di <strong>Tahubaxo Ibu Pudji Group</strong>. Sinergi antara operasional bisnis dan kepatuhan hukum menjadi fokus utama saya.</p>
-                </div>
-            </div>
-            <div class="bg-primary-50 p-8 rounded-2xl">
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="text-center p-4 bg-white rounded-xl shadow-sm">
-                        <h4 class="text-3xl font-bold text-primary-600">11+</h4>
-                        <p class="text-xs text-slate-500 uppercase tracking-widest">Tahun Pengalaman</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="aspect-square bg-slate-100 rounded-3xl overflow-hidden shadow-inner flex items-center justify-center border border-slate-200/60 relative z-10">
+                         <!-- Profile Image Placeholder -->
+                         <i class="fas fa-user-tie text-9xl text-slate-300 absolute"></i>
+                         <img src="https://ui-avatars.com/api/?name=Ia+Mahadewa&size=512&background=eff6ff&color=1e40af" alt="Foto Ia Mahadewa" class="w-full h-full object-cover relative z-10 opacity-90 mix-blend-multiply">
                     </div>
-                    <div class="text-center p-4 bg-white rounded-xl shadow-sm">
-                        <h4 class="text-3xl font-bold text-primary-600">50+</h4>
-                        <p class="text-xs text-slate-500 uppercase tracking-widest">Klien Terbantu</p>
+                    <!-- Decorative background element -->
+                    <div class="absolute -bottom-6 -right-6 w-full h-full border-2 border-primary-200 rounded-3xl z-0"></div>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6 relative inline-block">
+                        Tentang Saya
+                        <span class="absolute bottom-1 left-0 w-full h-3 bg-primary-100 -z-10 transform -rotate-1"></span>
+                    </h2>
+                    <div class="space-y-4 text-slate-600 text-lg leading-relaxed">
+                        <p>
+                            Perjalanan karir saya selama lebih dari 11 tahun telah membentuk pemahaman komprehensif di bidang hukum, kepatuhan korporasi, dan perizinan. Dimulai pada tahun 2015 sebagai Paralegal hingga kini dipercaya menjadi Lawyer di <strong>LBH Bhakti Nusa</strong>, saya terbiasa menangani advokasi dan litigasi secara langsung.
+                        </p>
+                        <p>
+                            Selain di ranah firma hukum, saya memiliki rekam jejak panjang di sektor korporasi industri—sebagai HRD di <strong>Tahubaxo Ibu Pudji Group</strong> dan spesialis GA & Legal di <strong>PT Educa Sismedia Indonesia</strong>. Pengalaman ganda ini menyadarkan saya betapa krusialnya sinergi antara operasional bisnis, legalitas, dan kepatuhan (compliance).
+                        </p>
+                        <p>
+                            Panggilan untuk memberikan dampak luas mendorong saya mengembangkan <strong>Lumina Solutions</strong> serta mendedikasikan diri di ekosistem Jaminan Produk Halal sebagai Supervisor Halal BPJPH dan Pimpinan Cabang LPH di Jawa Tengah.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8 grid grid-cols-2 gap-6">
+                        <div class="bg-primary-50 p-4 rounded-xl border border-primary-100">
+                            <h4 class="text-3xl font-bold text-primary-600 mb-1">11+</h4>
+                            <p class="text-sm font-medium text-slate-600">Tahun Pengalaman</p>
+                        </div>
+                        <div class="bg-primary-50 p-4 rounded-xl border border-primary-100">
+                            <h4 class="text-3xl font-bold text-primary-600 mb-1">50+</h4>
+                            <p class="text-sm font-medium text-slate-600">Klien Terbantu</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience -->
+    <!-- Experience Timeline -->
     <section id="pengalaman" class="py-20 bg-slate-50">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-16 text-center">Perjalanan Karir</h2>
-            <div class="relative timeline-container">
-                <!-- Data from LinkedIn -->
-                <div class="mb-12 pl-12 relative">
-                    <div class="absolute left-0 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white"><i class="fas fa-briefcase"></i></div>
-                    <h3 class="text-xl font-bold">Lawyer</h3>
-                    <p class="text-primary-600 font-medium">LBH Bhakti Nusa (2025 - Sekarang)</p>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 inline-block relative">
+                    Perjalanan Karir
+                    <span class="absolute bottom-1 left-0 w-full h-3 bg-primary-100 -z-10 transform -rotate-1"></span>
+                </h2>
+                <p class="mt-4 text-slate-600">Rekam jejak profesional saya, termasuk peran terkini di bidang sertifikasi halal.</p>
+            </div>
+
+            <div class="relative timeline-container py-4">
+
+                <!-- Halal Supervisor BPJPH -->
+                <div class="mb-12 md:flex justify-between items-center w-full relative">
+                    <div class="hidden md:block w-5/12 text-right pr-8">
+                        <h3 class="text-xl font-bold text-slate-900">Halal Supervisor / Penyelia Halal</h3>
+                        <p class="text-green-600 font-medium">BPJPH (Freelance)</p>
+                        <p class="text-sm text-slate-500 mt-1">Jan 2026 - Sekarang</p>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-white border-4 border-green-500 rounded-full z-10 flex items-center justify-center"></div>
+                    <div class="w-full pl-12 md:pl-0 md:w-5/12">
+                        <div class="md:hidden mb-2">
+                            <h3 class="text-xl font-bold text-slate-900">Halal Supervisor</h3>
+                            <p class="text-green-600 font-medium">BPJPH <span class="text-slate-500 text-sm ml-2">Jan 2026 - Sek</span></p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:border-green-200 transition">
+                            <ul class="list-none space-y-2 text-slate-600 text-sm">
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> Memastikan pelaksanaan Proses Halal di Usaha</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> Menyiapkan dokumen pengurusan sertifikat halal Reguler</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> Mendampingi Auditor saat pelaksanaan audit</li>
+                                <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> Realisasi post-audit & koordinasi proses halal</li>
+                            </ul>
+                            <div class="mt-3 pt-3 border-t border-slate-100 text-xs text-slate-500">
+                                <strong>Area:</strong> Jawa Tengah (Tetap) & Seluruh Indonesia (Non-Tetap) | <strong>Skala:</strong> Mikro - Menengah
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-12 pl-12 relative">
-                    <div class="absolute left-0 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white"><i class="fas fa-building"></i></div>
-                    <h3 class="text-xl font-bold">GA & Legal</h3>
-                    <p class="text-primary-600 font-medium">PT Educa Sismedia Indonesia (2022 - 2025)</p>
+
+                <!-- Pimpinan Cabang Jateng LPH -->
+                <div class="mb-12 md:flex justify-between items-center w-full relative md:flex-row-reverse">
+                    <div class="hidden md:block w-5/12 text-left pl-8">
+                        <h3 class="text-xl font-bold text-slate-900">Pimpinan Cabang Jateng & Penyelia Halal</h3>
+                        <p class="text-primary-600 font-medium">LPH Yayasan Islam Janeeta Apria</p>
+                        <p class="text-sm text-slate-500 mt-1">Okt 2025 - Sekarang</p>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-white border-4 border-primary-500 rounded-full z-10 flex items-center justify-center"></div>
+                    <div class="w-full pl-12 md:pl-0 md:w-5/12 text-left md:text-right">
+                        <div class="md:hidden mb-2">
+                            <h3 class="text-xl font-bold text-slate-900">Pimpinan Cabang Jateng</h3>
+                            <p class="text-primary-600 font-medium">LPH Janeeta Apria <span class="text-slate-500 text-sm ml-2">Okt 2025 - Sek</span></p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                             <ul class="list-none space-y-2 text-slate-600 text-sm inline-block text-left">
+                                <li class="flex items-start"><i class="fas fa-chevron-right text-primary-400 mt-1 mr-3"></i> Melakukan Pendampingan Pendaftaran Halal Reguler di Wilayah Salatiga dan sekitarnya</li>
+                                <li class="flex items-start"><i class="fas fa-chevron-right text-primary-400 mt-1 mr-3"></i> Berkoordinasi dengan pimpinan LPH pusat untuk pengurusan halal</li>
+                                <li class="flex items-start"><i class="fas fa-chevron-right text-primary-400 mt-1 mr-3"></i> Bekerjasama dengan berbagai instansi terkait</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-12 pl-12 relative">
-                    <div class="absolute left-0 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white"><i class="fas fa-users"></i></div>
-                    <h3 class="text-xl font-bold">HRD</h3>
-                    <p class="text-primary-600 font-medium">Tahubaxo Ibu Pudji Group (2021 - 2022)</p>
+
+                <!-- Lawyer -->
+                <div class="mb-12 md:flex justify-between items-center w-full relative">
+                    <div class="hidden md:block w-5/12 text-right pr-8">
+                        <h3 class="text-xl font-bold text-slate-900">Lawyer</h3>
+                        <p class="text-primary-600 font-medium">LBH Bhakti Nusa</p>
+                        <p class="text-sm text-slate-500 mt-1">2025 - Sekarang</p>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-white border-4 border-slate-300 rounded-full z-10 flex items-center justify-center"></div>
+                    <div class="w-full pl-12 md:pl-0 md:w-5/12">
+                        <div class="md:hidden mb-2">
+                            <h3 class="text-xl font-bold text-slate-900">Lawyer</h3>
+                            <p class="text-primary-600 font-medium">LBH Bhakti Nusa <span class="text-slate-500 text-sm ml-2">2025 - Sek</span></p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                            <p class="text-slate-600 text-sm">Menyiapkan dokumen persidangan, memberikan konsultasi hukum, dan bertindak sebagai Kuasa Hukum (Perdata) maupun Penasihat Hukum (Pidana).</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="pl-12 relative">
-                    <div class="absolute left-0 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white"><i class="fas fa-gavel"></i></div>
-                    <h3 class="text-xl font-bold">Paralegal</h3>
-                    <p class="text-primary-600 font-medium">LBH Bhakti Nusa (2015 - 2021)</p>
+
+                <!-- Combined GA, HRD, Paralegal -->
+                <div class="md:flex justify-between items-center w-full relative md:flex-row-reverse">
+                    <div class="hidden md:block w-5/12 text-left pl-8">
+                        <h3 class="text-xl font-bold text-slate-900">GA, HRD & Paralegal</h3>
+                        <p class="text-primary-600 font-medium">Korporasi & Firma Hukum</p>
+                        <p class="text-sm text-slate-500 mt-1">2015 - 2025</p>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-white border-4 border-slate-300 rounded-full z-10 flex items-center justify-center"></div>
+                    <div class="w-full pl-12 md:pl-0 md:w-5/12 text-left md:text-right">
+                        <div class="md:hidden mb-2">
+                            <h3 class="text-xl font-bold text-slate-900">GA, Legal & HRD</h3>
+                            <p class="text-primary-600 font-medium">Korporasi & Firma <span class="text-slate-500 text-sm ml-2">2015 - 2025</span></p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                            <p class="text-slate-600 text-sm mb-2 text-left md:text-right"><strong>2022-2025:</strong> GA & Legal di <strong>PT Educa Sismedia Indonesia</strong> (Fokus perizinan, HKI, aset, dan perjanjian).</p>
+                            <p class="text-slate-600 text-sm mb-2 text-left md:text-right"><strong>2021-2022:</strong> HRD di <strong>Tahubaxo Ibu Pudji Group</strong> (Rekrutmen & compliance).</p>
+                            <p class="text-slate-600 text-sm text-left md:text-right"><strong>2015-2021:</strong> Paralegal di <strong>LBH Bhakti Nusa</strong> (Posisi awal karir hukum saya sebelum diangkat menjadi Lawyer).</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section id="pendidikan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Education -->
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
+                        <i class="fas fa-graduation-cap text-primary-600 bg-primary-50 p-3 rounded-xl"></i> Pendidikan Formal
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-primary-200 pl-6 relative">
+                            <div class="absolute w-3 h-3 bg-primary-500 rounded-full -left-[7px] top-1.5"></div>
+                            <h3 class="text-xl font-bold text-slate-800">Magister Kenotariatan (M.Kn)</h3>
+                            <p class="text-primary-600 font-medium mb-1">Fakultas Hukum</p>
+                            <p class="text-sm text-slate-500 flex items-center gap-2"><i class="far fa-calendar-alt"></i> 2018 - 2021</p>
+                        </div>
+                        <div class="border-l-2 border-primary-200 pl-6 relative">
+                            <div class="absolute w-3 h-3 bg-primary-500 rounded-full -left-[7px] top-1.5"></div>
+                            <h3 class="text-xl font-bold text-slate-800">Sarjana Hukum (S.H.)</h3>
+                            <p class="text-primary-600 font-medium mb-1">Fakultas Hukum, HKI</p>
+                            <p class="text-sm text-slate-500 flex items-center gap-2"><i class="far fa-calendar-alt"></i> 2014 - 2018</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications (Updated) -->
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
+                        <i class="fas fa-award text-primary-600 bg-primary-50 p-3 rounded-xl"></i> Lisensi & Sertifikasi
+                    </h2>
+                    <div class="grid grid-cols-1 gap-4">
+                        
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex items-center hover:border-green-300 transition">
+                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-xl shrink-0 mr-4"><i class="fas fa-certificate"></i></div>
+                            <div>
+                                <h3 class="font-bold text-slate-800">Penyelia Halal Skala Reguler</h3>
+                                <p class="text-slate-500 text-sm">Tahun 2026</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex items-center hover:border-primary-300 transition">
+                            <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center text-xl shrink-0 mr-4"><i class="fas fa-file-signature"></i></div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-sm md:text-base">Pendidikan & Pelatihan Dasar Calon Pejabat Pembuat Akta Tanah</h3>
+                                <p class="text-slate-500 text-sm">Tahun 2025</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex items-center hover:border-green-300 transition">
+                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-xl shrink-0 mr-4"><i class="fas fa-leaf"></i></div>
+                            <div>
+                                <h3 class="font-bold text-slate-800">Pendamping Proses Produk Halal</h3>
+                                <p class="text-slate-500 text-sm">Tahun 2023</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex items-center hover:border-amber-300 transition">
+                            <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-xl shrink-0 mr-4"><i class="fas fa-shield-alt"></i></div>
+                            <div>
+                                <h3 class="font-bold text-slate-800">Keamanan Pangan Berdasarkan ISO 22000</h3>
+                                <p class="text-slate-500 text-sm">Tahun 2023</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Education & Licenses -->
-    <section id="pendidikan" class="py-20">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-16 text-center">Lisensi & Pendidikan</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Sertifikasi -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-6">Lisensi & Sertifikasi</h3>
-                    <ul class="space-y-4">
-                        <li class="flex gap-4">
-                            <i class="fas fa-certificate text-green-500 mt-1"></i>
-                            <div><p class="font-bold">Penyelia Halal Skala Reguler</p><p class="text-sm text-slate-500">Tahun 2026</p></div>
-                        </li>
-                        <li class="flex gap-4">
-                            <i class="fas fa-file-contract text-blue-500 mt-1"></i>
-                            <div><p class="font-bold">Pendidikan & Pelatihan Dasar Calon Pejabat Pembuat Akta Tanah</p><p class="text-sm text-slate-500">Tahun 2025</p></div>
-                        </li>
-                        <li class="flex gap-4">
-                            <i class="fas fa-leaf text-green-500 mt-1"></i>
-                            <div><p class="font-bold">Pendamping Proses Produk Halal</p><p class="text-sm text-slate-500">Tahun 2023</p></div>
-                        </li>
-                        <li class="flex gap-4">
-                            <i class="fas fa-shield-alt text-amber-500 mt-1"></i>
-                            <div><p class="font-bold">Keamanan Pangan Berdasarkan ISO 22000</p><p class="text-sm text-slate-500">Tahun 2023</p></div>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Pendidikan -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-6">Pendidikan Formal</h3>
-                    <ul class="space-y-4">
-                        <li><p class="font-bold">Magister Kenotariatan (M.Kn)</p><p class="text-sm text-slate-500">2018 - 2021</p></li>
-                        <li><p class="font-bold">Sarjana Hukum (S.H.)</p><p class="text-sm text-slate-500">2014 - 2018</p></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Aktifitas -->
+    <!-- Current Business & Organizations -->
     <section id="bisnis" class="py-20 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-16 text-center">Aktivitas & Klien</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8 mb-16">
-                <!-- Org -->
-                <div class="bg-slate-800 p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-6">Pengalaman Organisasi</h3>
-                    <ul class="space-y-4">
-                        <li><p class="font-bold text-primary-400">Sekretaris Umum</p><p>PAC Gerakan Pemuda Ansor Kec. Sidorejo, Salatiga</p></li>
-                        <li><p class="font-bold text-primary-400">Sekretaris</p><p>Pengurus Anak Ranting (PAR) NU Sukosari</p></li>
-                        <li><p class="font-bold text-primary-400">Sekretaris</p><p>Titik Khotaman Ponpes Suryabuana Magelang (2024 - Sekarang)</p></li>
-                    </ul>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold inline-block relative">
+                    Kesibukan & Aktivitas Saat Ini
+                </h2>
+                <p class="mt-4 text-slate-400">Bisnis independen, peran di LPH, dan aktivitas keorganisasian.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                <!-- Lumina Solutions -->
+                <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-primary-500 transition-colors">
+                    <div class="w-12 h-12 bg-primary-600/20 rounded-xl flex items-center justify-center text-primary-400 text-xl mb-4">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Lumina Solutions</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Bisnis mandiri berfokus pada penyediaan Jasa Perizinan dan Konsultasi Hukum untuk korporasi maupun individu.
+                    </p>
                 </div>
-                <!-- Klien Korporasi -->
-                <div class="bg-slate-800 p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-6">Klien Korporasi</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li>CV Pudji Lestari Berkah (Perubahan Akta)</li>
-                        <li>Beras Tuankrabes (Pendaftaran Merek)</li>
-                        <li>Bakso Babat Pak BR 101 (Pendaftaran Merek)</li>
-                    </ul>
+                
+                <!-- Pimpinan LPH -->
+                <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-blue-500 transition-colors">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 text-xl mb-4">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Pimpinan Cabang Jateng</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-3">
+                        LPH Yayasan Islam Janeeta Apria.
+                    </p>
+                    <p class="text-slate-400 text-xs">Fokus pendampingan pendaftaran Halal Reguler wilayah Salatiga, koordinasi dengan pusat, dan instansi terkait.</p>
+                </div>
+
+                <!-- Penyelia Halal BPJPH -->
+                <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-green-500 transition-colors">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center text-green-400 text-xl mb-4">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Penyelia Halal BPJPH</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-3">
+                        Freelance - BPJPH.
+                    </p>
+                    <p class="text-slate-400 text-xs">Memastikan proses halal berjalan di Usaha, mendampingi proses audit reguler untuk skala Mikro hingga Menengah.</p>
                 </div>
             </div>
 
-            <!-- Klien Halal -->
-            <div class="bg-slate-800 p-8 rounded-2xl">
-                <h3 class="text-xl font-bold mb-6">Klien Halal Reguler</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-slate-300">
-                    <p>Bakso Babat & Mie Ayam Pak BR 101</p>
-                    <p>Soto Suruh</p>
-                    <p>Tahu Bakso Abdul Wahid</p>
-                    <p>Atthaya Cattering</p>
-                    <p>SPPG Ledok Edimancoro</p>
-                    <p>SPPG Tok Songo Suruh</p>
-                    <p>PT Fresh Frozen Indonesia</p>
-                    <p>RPA Karya Mumpuni</p>
-                    <p>Maju Bakery</p>
-                    <p>SPPG Pabelan Semarang</p>
-                    <p>SPPG Tingkir Tengah Salatiga</p>
-                    <p>SPPG Randuacir Salatiga</p>
-                    <p>SPPG Kencandran 01 & 02</p>
+            <!-- Organizations -->
+            <div class="bg-slate-800/50 rounded-2xl p-8 border border-slate-700">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fas fa-users text-primary-400"></i> Pengalaman Organisasi
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="border-l-2 border-slate-600 pl-4">
+                        <h4 class="font-bold text-lg">Sekretaris Umum</h4>
+                        <p class="text-slate-400 text-sm mb-1">PAC Gerakan Pemuda Ansor Kec. Sidorejo, Salatiga</p>
+                        <p class="text-primary-400 text-xs">2025 - Sekarang</p>
+                    </div>
+                    <div class="border-l-2 border-slate-600 pl-4">
+                        <h4 class="font-bold text-lg">Sekretaris</h4>
+                        <p class="text-slate-400 text-sm mb-1">Pengurus Anak Ranting Nahdlatul Ulama Sukosari, Cebogan</p>
+                        <p class="text-primary-400 text-xs">2024 - Sekarang</p>
+                    </div>
+                    <div class="border-l-2 border-slate-600 pl-4">
+                        <h4 class="font-bold text-lg">Sekretaris</h4>
+                        <p class="text-slate-400 text-sm mb-1">Titik Khotaman Ponpes Suryabuana Magelang</p>
+                        <p class="text-primary-400 text-xs">2024 - Sekarang</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Clients Section -->
+    <section class="py-20 bg-primary-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 inline-block relative">
+                    Klien & Portofolio
+                    <span class="absolute bottom-1 left-0 w-full h-3 bg-primary-200 -z-10 transform -rotate-1"></span>
+                </h2>
+                <p class="mt-4 text-slate-600">Sebagian dari mitra yang mempercayakan perizinan hukum dan sertifikasi halal kepada saya.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Client Category: Corporate -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <h3 class="font-bold text-xl text-primary-700 mb-4 border-b pb-3 flex items-center"><i class="fas fa-building mr-3"></i> Korporasi & Badan Usaha</h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex items-start"><i class="fas fa-check text-primary-400 mt-1 mr-2"></i> <div><strong>CV Pudji Lestari Berkah</strong> <br><span class="text-xs text-slate-500">Perubahan Akta</span></div></li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary-400 mt-1 mr-2"></i> <div><strong>Beras Tuankrabes</strong> <br><span class="text-xs text-slate-500">Pendaftaran Merek</span></div></li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary-400 mt-1 mr-2"></i> <div><strong>Bakso Babat Pak BR 101</strong> <br><span class="text-xs text-slate-500">Pendaftaran Merek</span></div></li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary-400 mt-1 mr-2"></i> <div><strong>CV Maju Jaya Indonesia</strong> <br><span class="text-xs text-slate-500">Perubahan AD Perseroan</span></div></li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary-400 mt-1 mr-2"></i> <div><strong>PT Syarina Dua Putri</strong> <br><span class="text-xs text-slate-500">Perizinan & Pajak</span></div></li>
+                        <li class="flex items-start"><i class="fas fa-check text-primary-400 mt-1 mr-2"></i> <div><strong>CV Aura Computindo</strong> <br><span class="text-xs text-slate-500">Perizinan & Pajak</span></div></li>
+                    </ul>
+                </div>
+
+                <!-- Client Category: Halal Reguler -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <h3 class="font-bold text-xl text-green-600 mb-4 border-b pb-3 flex items-center"><i class="fas fa-certificate mr-3"></i> Klien Halal Reguler</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-3 text-sm text-slate-700">
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> Bakso Babat & Mie Ayam Pak BR 101</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> Soto Suruh</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> Tahu Bakso Abdul Wahid</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> Atthaya Cattering</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> SPPG Ledok Edimancoro</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> SPPG Tok Songo Suruh</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> Jasa Distribusi PT Fresh Frozen Ind.</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> RPA Karya Mumpuni</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> SPPG Tegalrejo 02</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> SPPG Kauman Kidul</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> Maju Bakery</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> SPPG Pabelan Semarang</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> SPPG Tingkir Tengah Salatiga</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> SPPG Randuacir Salatiga</div>
+                        <div class="flex items-start"><i class="fas fa-circle text-[8px] text-green-500 mt-1.5 mr-2 shrink-0"></i> SPPG Kencandran 01 & 02</div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-center italic text-slate-500 text-xs">
+                        Dan berbagai klien lainnya...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer id="kontak" class="bg-slate-900 pt-20 pb-10 border-t-4 border-primary-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-6">Mari Berdiskusi!</h2>
+                    <p class="text-slate-400 mb-8 max-w-md leading-relaxed">
+                        Jika Anda atau perusahaan Anda membutuhkan konsultasi hukum, bantuan perizinan, sertifikasi halal, atau diskusi kerja sama, jangan ragu untuk menghubungi saya.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://api.whatsapp.com/send/?phone=%2B6285169436654" target="_blank" class="w-12 h-12 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center text-xl transition-transform hover:-translate-y-1 shadow-lg shadow-green-500/30">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://id.linkedin.com/in/mahadewa165" target="_blank" class="w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center text-xl transition-transform hover:-translate-y-1 shadow-lg shadow-blue-600/30">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/masdewa165/" target="_blank" class="w-12 h-12 bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 hover:opacity-90 text-white rounded-full flex items-center justify-center text-xl transition-transform hover:-translate-y-1 shadow-lg shadow-pink-500/30">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-800 rounded-2xl p-6 md:p-8">
+                    <h3 class="text-xl font-bold text-white mb-6">Informasi Kontak</h3>
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <div class="w-10 h-10 rounded-lg bg-primary-900/50 flex items-center justify-center text-primary-400 shrink-0">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm text-slate-400">WhatsApp / Telepon</p>
+                                <a href="https://api.whatsapp.com/send/?phone=%2B6285169436654" class="text-white font-medium hover:text-primary-400 transition">+62 851-6943-6654</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-10 h-10 rounded-lg bg-primary-900/50 flex items-center justify-center text-primary-400 shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm text-slate-400">Email</p>
+                                <a href="mailto:work.mahadewa@gmail.com" class="text-white font-medium hover:text-primary-400 transition">work.mahadewa@gmail.com</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-10 h-10 rounded-lg bg-primary-900/50 flex items-center justify-center text-primary-400 shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm text-slate-400">Area Layanan</p>
+                                <p class="text-white font-medium">Jawa Tengah (Salatiga & Sekitarnya) & Nasional</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-slate-500 text-sm text-center md:text-left mb-4 md:mb-0">
+                    &copy; 2026 Ia Mahadewa Putera Dirgantoro. All rights reserved.
+                </p>
+                <div class="text-slate-600 text-sm">
+                    CV Ia Mahadewa PD
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar blur and shadow on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('bg-white/90', 'bg-white/95');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.replace('bg-white/95', 'bg-white/90');
+            }
+        });
+    </script>
 </body>
 </html>
